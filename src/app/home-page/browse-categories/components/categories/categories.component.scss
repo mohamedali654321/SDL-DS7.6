@@ -1,0 +1,146 @@
+.categories-container {
+  text-decoration: none;
+  margin: auto;
+  margin-bottom: 15px;
+}
+
+.browse-category-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categories {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow-x: hidden;
+  margin: auto;
+}
+
+.category {
+  padding: 0 0.3rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.category:first-child {
+  padding-left: 0;
+  padding-right: 0.3rem;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.category:last-child {
+  padding-left: 0.3rem;
+  padding-right: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+::ng-deep html[dir="rtl"] {
+  .category:first-child {
+    padding-left: 0.3rem;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .category:last-child {
+    padding-left: 0;
+    padding-right: 0.3rem;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.browse-category-btn {
+  height: 50px;
+  background-color: rgb(247, 247, 250);
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.category-link {
+  background-color: rgb(243, 243, 247);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  text-overflow: ellipsis;
+  font-weight: bold;
+  font-size: 1.22rem;
+  cursor: pointer;
+  height: 50px;
+  width: 14.4rem;
+}
+
+.category-link:is(:hover, .active) {
+  background-color: rgb(250, 250, 252);
+}
+
+.category-link-selected {
+  background-color: #2666ab;
+  color: #FFF !important;
+  display: flex;
+  align-items: center;
+  border-bottom: 4px solid rgb(253, 173, 53);
+  text-overflow: ellipsis;
+  height: 50px;
+  width: 14.4rem;
+  font-weight: bold;
+  font-size: 1.22rem;
+  opacity: 5;
+
+  /** disable click event */
+  pointer-events: none;
+  cursor: default;
+}
+
+::ng-deep .category-link-selected .badge {
+  color: #2666ab !important;
+  background-color: #FFF !important;
+  transition: none;
+  font-size: 1rem;
+}
+
+::ng-deep .category-link .badge {
+  color: #2666ab !important;
+  background-color: #FFF !important;
+  transition: none;
+  border: 1px solid #2666ab;
+  font-size: 1rem;
+}
+
+.browse-category-circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.browse-category-link-circle {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: 1px solid #2666ab;
+}
+
+.browse-category-link-circle-selected {
+  height: 12px;
+  width: 12px;
+  background-color: #2666ab;
+  border-radius: 50%;
+  border: 1px solid #2666ab;
+}
+
+@media screen and (max-width: 700px) {
+  .category-link-selected {
+    width: 17rem;
+  }
+
+  .category-link {
+    width: 17rem;
+  }
+}

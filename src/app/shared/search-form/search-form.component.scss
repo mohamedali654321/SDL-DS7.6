@@ -1,0 +1,67 @@
+// temporary fix for bootstrap 4 beta btn color issue
+.btn-secondary {
+  background-color: var(--bs-input-bg);
+  color: var(--bs-input-color);
+}
+
+.scope-button {
+  max-width: var(--ds-search-form-scope-max-width);
+}
+
+
+.clearIcon:hover{
+  transform: translateX(30px) !important;
+    color: #FFF;
+    z-index: 100;
+    margin-left: -27px !important;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: 1rem;
+    border-radius: 50%;
+    width: 25px;
+    background-color: hsla(0, 0%, 4%, 0.404) !important;
+    height: 25px;
+    padding: 0;
+    margin-top: 7px;
+    text-decoration: none;
+    text-shadow: none !important;
+}
+ select{
+  border-right: 0;
+}
+
+.clearIcon{
+  transform: translateX(20px);
+        color: #495057;
+        z-index: 100;
+        cursor: pointer;
+        margin-left: -14px;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        font-size: 1rem;
+        text-shadow: none !important;
+}
+
+::ng-deep  .clearIcon:hover{
+  margin-top: 9px !important;
+}
+
+::ng-deep html[dir="ltr"] {
+  .clearIcon{
+    transform: translateX(-6px) !important;
+  } 
+
+  .clearIcon:hover{
+    transform: translateX(-2px) !important;
+  }
+   .clearIcon:hover{
+    margin-top: 11px !important;
+  }
+
+ select{
+    border-left: 0;
+  }
+  
+}

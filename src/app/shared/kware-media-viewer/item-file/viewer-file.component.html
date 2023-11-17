@@ -1,0 +1,16 @@
+<a
+  #selectedFileRef
+  (click)="emitMediaViewerSwitcher()"
+  [ngClass]="
+    bitstream?.format ? 'file-link-container' : 'file-link-container-disabled'
+  "
+>
+  <ds-item-file-icon
+    *ngIf="(canDownload$ | async) && bitstream?.format"
+    [fileFormat]="bitstream?.format"
+  ></ds-item-file-icon>
+  <span class="no-perms" *ngIf="!(canDownload$ | async) && bitstream?.format"
+    ><em class="fas fa-lock fa-lg"></em
+  ></span>
+  <span class="file-name">{{ bitstream?.name }}</span>
+</a>

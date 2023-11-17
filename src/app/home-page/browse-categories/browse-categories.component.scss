@@ -1,0 +1,17 @@
+::ng-deep {
+  ds-publication-category {
+    ds-categories {
+      .browse-category-content {
+        max-width: 1024px !important;
+      }
+    }
+  }
+}
+
+::ng-deep html[dir="ltr"] .fa-angle-double-left {
+  transform: scale(-1) !important;
+}
+
+::ng-deep html[dir="ltr"] .fa-angle-double-right {
+  transform: scale(-1) !important;
+}

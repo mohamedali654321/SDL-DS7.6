@@ -1,0 +1,3 @@
+<span class="pr-2">&nbsp;</span>
+      <span [attr.title]="('publication.counts' | translate)"  *ngIf="(data | async).length >= 0" class="badge badge-pill badge-secondary align-self-center archived-items-lead"><img style="
+            filter: brightness(0) invert(1);width: 13px;" src="assets/images/book.svg"/>&nbsp;{{countLength | async}}

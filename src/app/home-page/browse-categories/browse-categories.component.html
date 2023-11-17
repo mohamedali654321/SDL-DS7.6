@@ -1,0 +1,29 @@
+<div style="margin-top: 20px">
+  <ds-categories
+    [categories]="parentCategories"
+    [setSelectedCategoryItems]="setSelectedCategoryItems"
+    [selectedCategory]="selectedCategory"
+    [getCategoryItems]="getCategoryItems"
+    [categoriesConfigs]="categoriesConfigs"
+    [translatePipe]="'translate'"
+    [categoryParam]="'category'"
+  ></ds-categories>
+
+  <!-- Category content -->
+  <ds-category-content
+    *ngIf="selectedCategory !== 0"
+    [objects]="itemRD$"
+    [paginationConfig]="paginationConfig"
+    [sortConfig]="sortConfig"
+    [loadMoreLink]="'/browse/entityType'"
+    [loadMoreParams]="{
+      value: sortedCategories[selectedCategory],
+      view: 'grid',
+      source: 'browseCategory'
+    }"
+  ></ds-category-content>
+
+  <ds-publication-category
+    *ngIf="selectedCategory === 0 "
+  ></ds-publication-category>
+</div>

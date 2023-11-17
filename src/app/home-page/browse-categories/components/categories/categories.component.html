@@ -1,0 +1,86 @@
+<ng-container>
+  <div class="container categories-container" *ngIf="categories?.length > 0">
+    <div class="browse-category-content container">
+      <!-- Prev btn -->
+      <div>
+        <button
+          (click)="getPrevCategory()"
+          class="browse-category-btn"
+          dsStopContextMenu
+        >
+          <i class="fa fa-angle-double-right fa-lg"></i>
+        </button>
+      </div>
+      <div class="container">
+        <div class="categories">
+          <div
+            class="category"
+            *ngFor="let category of categories; let index = index"
+          >
+            <ds-category
+              [ngClass]="
+                index === selectedCategory
+                  ? 'category-link-selected'
+                  : 'category-link'
+              "
+              [category]="category"
+              [categoryIndex]="index"
+              [categoryIcon]="categoriesConfigs[category.value]?.icon || ''"
+              [currentCategoryIndex]="selectedCategory"
+              (emitedCategory)="setSelectedCategory($event)"
+              [setSelectedCategoryItems]="setSelectedCategoryItems"
+              [getCategoryItems]="getCategoryItems"
+              [translatePipe]="translatePipe"
+            ></ds-category>
+          </div>
+        </div>
+      </div>
+      <!-- Next btn -->
+      <div>
+        <button
+          (click)="getNextCategory()"
+          class="browse-category-btn"
+          dsStopContextMenu
+        >
+          <i class="fa fa-angle-double-left fa-lg"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category circle -->
+  <div class="browse-category-circle">
+    <div
+      class="browse-category-content"
+      style="padding: 0 0.1rem"
+      *ngFor="let category of categories; let index = index"
+    >
+      <div
+        class="browse-category-content"
+        *ngIf="translatePipe === 'translate'"
+      >
+        <a
+          *ngVar="'search.filters.entityType.' + category.value as key"
+          [ngClass]="
+            index === selectedCategory
+              ? 'browse-category-link-circle-selected'
+              : 'browse-category-link-circle'
+          "
+          (click)="setSelectedCategory(index)"
+          [ngbTooltip]="key | translate"
+        ></a>
+      </div>
+
+      <a
+        *ngIf="translatePipe === 'kwareTranslate'"
+        [ngClass]="
+          index === selectedCategory
+            ? 'browse-category-link-circle-selected'
+            : 'browse-category-link-circle'
+        "
+        (click)="setSelectedCategory(index)"
+        [ngbTooltip]="category.value | kwareTranslate"
+      ></a>
+    </div>
+  </div>
+</ng-container>

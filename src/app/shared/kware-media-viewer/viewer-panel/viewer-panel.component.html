@@ -1,0 +1,70 @@
+<ng-container *ngIf="fileMeta?.format">
+  <ds-kware-image-viewer
+    *ngIf="fileMeta?.format?.startsWith('image')"
+    [closeViewer]="closeViewer"
+    [fileMeta]="fileMeta"
+    [imageUrl]="fileUrl"
+    [isMobile]="isMobile"
+    [viewerPanelsStatus]="viewerPanelsStatus"
+  ></ds-kware-image-viewer>
+  <ds-kware-pdf-viewer
+    *ngIf="
+      (fileMeta.canDownload | async) && fileMeta?.format === 'application/pdf'
+    "
+    [closeViewer]="closeViewer"
+    [fileMeta]="fileMeta"
+    [isMobile]="isMobile"
+    [viewerPanelsStatus]="viewerPanelsStatus"
+    [fileUrl]="fileUrl"
+    [bitstreamPath]="fileMeta.bitstreamPath | async"
+  ></ds-kware-pdf-viewer>
+  <ds-kware-document-viewer
+    *ngIf="
+      (fileMeta.canDownload | async) &&
+      msFilesFormats.includes(fileMeta?.format)
+    "
+    [docURL]="fileUrl"
+    [locale]="localeCode"
+    [closeViewer]="closeViewer"
+    [isMobile]="isMobile"
+    [viewerPanelsStatus]="viewerPanelsStatus"
+    [fileMeta]="fileMeta"
+  ></ds-kware-document-viewer>
+  <ds-kware-video-player
+    *ngIf="
+      (fileMeta.canDownload | async) &&
+      (fileMeta?.format.startsWith('video') ||
+        fileMeta?.format.startsWith('audio'))
+    "
+    [fileMeta]="fileMeta"
+    [src]="fileUrl"
+    [closeViewer]="closeViewer"
+    [isMobile]="isMobile"
+    [viewerPanelsStatus]="viewerPanelsStatus"
+    [locale]="localeCode"
+  ></ds-kware-video-player>
+  <ds-unknown-file-format
+    *ngIf="
+      !msFilesFormats.includes(fileMeta?.format) &&
+      !fileMeta?.format.startsWith('image') &&
+      !fileMeta?.format.startsWith('video') &&
+      !fileMeta?.format.startsWith('audio') &&
+      fileMeta?.format !== 'application/pdf' &&
+      fileUrl !== '' &&
+      (fileMeta.canDownload | async)
+    "
+    [closeViewer]="closeViewer"
+    [fileMeta]="fileMeta"
+    [isMobile]="isMobile"
+    [viewerPanelsStatus]="viewerPanelsStatus"
+  >
+  </ds-unknown-file-format>
+  <ds-request-a-copy
+    *ngIf="fileMeta.canRequestACopy | async"
+    [closeViewer]="closeViewer"
+    [fileMeta]="fileMeta"
+    [isMobile]="isMobile"
+    [viewerPanelsStatus]="viewerPanelsStatus"
+  >
+  </ds-request-a-copy>
+</ng-container>

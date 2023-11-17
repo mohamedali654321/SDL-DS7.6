@@ -1,0 +1,18 @@
+<a
+  #selectedCategoryRef
+  class="categoy-container"
+  (click)="setSelectedCategory()"
+>
+  <i [class]="categoryIcon" aria-hidden="true"></i>
+  <span *ngIf="translatePipe === 'translate'">{{
+    "search.filters.entityType." + category.value | translate
+  }}</span>
+  <span *ngIf="translatePipe === 'kwareTranslate'">{{
+    (category.value !== 'All') ? (category.value | kwareTranslate)  : ('browse.itemtype.'+ category.value | translate)
+  }}</span>
+  <span class="badge badge-pill badge-secondary align-self-center">{{
+    formatNumberToKStyle(
+      category.count || (fetchedItems | async)?.payload?.totalElements
+    )
+  }}</span>
+</a>

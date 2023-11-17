@@ -1,0 +1,20 @@
+.categoy-container {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: inherit;
+}
+
+.categoy-name {
+  text-justify: auto;
+  padding-inline-start: 10px;
+  white-space: break-spaces;
+  text-align: inherit;
+  padding: 5px;
+}

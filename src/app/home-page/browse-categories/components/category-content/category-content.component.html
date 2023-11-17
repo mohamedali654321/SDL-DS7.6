@@ -1,0 +1,32 @@
+<div class="container">
+  <div *ngIf="!(objects | async)?.payload?.page.length" class="content-loading">
+    <ds-themed-loading
+      message="{{ 'loading.default' | translate }}"
+      [showMessage]="true"
+    ></ds-themed-loading>
+  </div>
+  <h4 *ngIf="(objects | async)?.payload?.page.length" class="recent-head" style="color: #333 !important;"> {{'home.recent-submissions.items' | translate}}</h4>
+
+  <ds-viewable-collection
+    [config]="paginationConfig"
+    [sortConfig]="sortConfig"
+    [objects]="objects | async"
+    [hideGear]="false"
+  >
+  </ds-viewable-collection>
+
+  <div *ngIf="(objects | async)?.payload?.totalElements > 5" class="loadMore">
+    <a style="background-color: #333 !important;
+    border-color: #333 !important;"
+      [routerLink]="[loadMoreLink]"
+      [queryParams]="{
+        value: loadMoreParams.value,
+        view: loadMoreParams.view,
+        source: loadMoreParams.source
+      }"
+      class="btn btn-primary search-button mt-2 float-right ng-tns-c290-40"
+    >
+      {{ "vocabulary-treeview.load-more" | translate }} ...</a
+    >
+  </div>
+</div>

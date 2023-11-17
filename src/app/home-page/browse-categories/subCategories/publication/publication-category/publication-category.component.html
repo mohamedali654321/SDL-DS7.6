@@ -1,0 +1,31 @@
+<div>
+  <ds-categories
+    [categories]="pubCategories"
+    [setSelectedCategoryItems]="setSelectedCategoryItems"
+    [selectedCategory]="selectedCategory"
+    [getCategoryItems]="getPubCategoryItems"
+    [categoriesConfigs]="pubCategoriesConfig"
+    [translatePipe]="'kwareTranslate'"
+    [categoryParam]="'subCategory'"
+  ></ds-categories>
+  <!-- Category content -->
+  <ds-category-content
+    *ngIf="itemRD$"
+    [objects]="itemRD$"
+    [paginationConfig]="paginationConfig"
+    [sortConfig]="sortConfig"
+    [loadMoreLink]="
+      pubCategories[selectedCategory].value === 'All'
+        ? '/browse/entityType'
+        : '/browse/itemtype'
+    "
+    [loadMoreParams]="{
+      value:
+        pubCategories[selectedCategory].value === 'All'
+          ? 'Publication'
+          : pubCategories[selectedCategory].value,
+      view: 'grid',
+      source: 'browseCategory'
+    }"
+  ></ds-category-content>
+</div>

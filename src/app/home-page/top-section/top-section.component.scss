@@ -1,0 +1,67 @@
+.pagination-info{
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+.grid-container {
+  display: grid;
+  // grid-template-columns: auto auto auto auto auto;
+  // grid-template-columns: repeat(5, 1fr);
+  // gap: 5px;
+  grid-template-columns: repeat(auto-fill, minmax(278px, .1fr));
+  grid-gap: 15px;
+}
+
+.card-container{
+position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  width: 278px !important;
+  height: 621px !important;
+}
+
+::ng-deep .card-container .thumbnail-content{
+height: 300px !important;
+width: 100% !important;
+display: block !important;
+min-width: 100% !important;
+min-height: 100% !important;
+}
+
+
+:host ::ng-deep {
+  --ds-wrapper-grid-spacing: calc(var(--bs-spacer) / 2);
+
+  div.card {
+    margin-top: var(--ds-wrapper-grid-spacing);
+    margin-bottom: var(--ds-wrapper-grid-spacing);
+
+    div.thumbnail > .thumbnail-content {
+      height: 300px;
+      width: 100%;
+      display: block;
+      min-width: 100%;
+      min-height: 100%;
+      // object-fit: cover;
+      // object-position: 50% 15%;
+    }
+  }
+}
+
+.card-columns {
+  margin-left: calc(-1 * var(--ds-wrapper-grid-spacing));
+  margin-right: calc(-1 * var(--ds-wrapper-grid-spacing));
+  column-gap: 0;
+
+  .card-column {
+    padding-left: var(--ds-wrapper-grid-spacing);
+    padding-right: var(--ds-wrapper-grid-spacing);
+  }
+}
+
+
